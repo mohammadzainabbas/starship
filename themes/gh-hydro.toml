@@ -1,3 +1,5 @@
+# https://github.com/mattmc3/zephyr/blob/main/plugins/prompt/themes/hydro.toml
+
 add_newline = false
 command_timeout = 2000
 format = "$all$directory$git_branch${custom.git_status_dirty}$git_status$cmd_duration$status$character"
