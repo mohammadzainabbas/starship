@@ -1,5 +1,9 @@
 #! /bin/sh
-# This script will be loading when Warp
+# -----------------------------------------------------------------------------
+# This script will be loading when Warp (https://www.warp.dev/) is loaded.
+# 
+# 
+# -----------------------------------------------------------------------------
 
 # export STARSHIP_CONFIG=~/.config/starship/themes/pastel-powerline.toml
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
