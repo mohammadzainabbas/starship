@@ -1,5 +1,6 @@
 #! /bin/sh
 # -----------------------------------------------------------------------------
+# 
 # This script will be loading when Warp (https://www.warp.dev/) is loaded, via:
 # 
 # ``` (inside ~/.zshrc)
@@ -8,8 +9,6 @@
 #     source ~/.config/starship/scripts/warp-init.sh
 # fi
 # ```
-#
-# 
 # -----------------------------------------------------------------------------
 
 # export STARSHIP_CONFIG=~/.config/starship/themes/pastel-powerline.toml
