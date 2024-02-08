@@ -1,0 +1,563 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Use custom format (left prompt)
+format = """\
+[](bg:#030B16 fg:fg-darker-cyan)\
+[󰀵 ](bg:fg-darker-cyan fg:#090c0c)\
+$time\
+$directory\
+[](fg:bg-navy-blue bg:bg-yellow)\
+$git_branch\
+$git_status\
+$git_metrics\
+[](fg:bg-yellow bg:#030B16)\
+$character\
+"""
+
+# Continuation Prompt (https://starship.rs/advanced-config/#continuation-prompt)
+continuation_prompt = "::: "
+
+# move the rest of the prompt to the right
+right_format = """$all"""
+
+# Wait 50 milliseconds for starship to check files under the current directory.
+scan_timeout = 50
+
+#Timeout for commands executed by starship (in milliseconds).
+command_timeout = 1000
+
+# Set 'warp_colors' as custom color palette
+palette = 'warp_colors'
+
+# Define custom colors
+[palettes.warp_colors]
+# Define new colors for directory module
+bg-navy-blue = '#3B76F0'
+fg-white = '#E4E4E4'
+
+# Define new colors for git_branch module
+bg-yellow = '#FCF392'
+fg-dark-blue = '#1C3A5E'
+
+# Define new colors for time module
+# sty-bg-black = '#1d2230'
+fg-cyan = '#8DFBD2'
+fg-darker-cyan = '#7DF9AA'
+
+#-------------------------------------------------------------------------------
+# Module(s) Configuration
+#-------------------------------------------------------------------------------
+
+# AWS module https://starship.rs/config/#aws
+[aws]
+# format = 'on [$symbol($profile )(\($region\) )]($style)'
+format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+symbol = "🌩️  "
+style = "bold blue"
+disabled = false
+
+# AWS region aliases
+[aws.region_aliases]
+eu-north-1 = "eu-stockholm"
+eu-west-1 = "eu-ireland"
+eu-west-2 = "eu-london"
+eu-west-3 = "eu-paris"
+eu-central-1 = "eu-frankfurt"
+eu-central-2 = "eu-zurich"
+eu-south-1 = "eu-milan"
+us-east-1 = "us-virginia"
+us-east-2 = "us-ohio"
+us-west-1 = "us-california"
+us-west-2 = "us-oregon"
+ca-central-1 = "ca-montreal"
+cn-north-1 = "cn-beijing"
+cn-northwest-1 = "cn-ningxia"
+
+# Azure module https://starship.rs/config/#azure
+[azure]
+disabled = true
+
+# Battery module https://starship.rs/config/#battery
+[battery]
+format = '[$symbol$percentage]($style) '
+full_symbol = '🔋 '
+charging_symbol = '⚡️'
+disabled = false
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 20%
+threshold = 20
+style = 'bold red'
+discharging_symbol = '🪫 '
+
+[[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 20% and 35%
+threshold = 35
+style = 'bold yellow'
+discharging_symbol = '💦 '
+# when capacity is over 35%, the battery indicator will not be displayed
+
+# Buf module https://starship.rs/config/#buf
+[buf]
+disabled = true
+
+# Bun module https://starship.rs/config/#bun
+[bun]
+format = 'via [$symbol($version )]($style)'
+symbol = '🍞 '
+style = 'bold red'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['bun.lockb', 'bunfig.toml']
+disabled = false
+
+# C module https://starship.rs/config/#c
+[c]
+format = 'via [$symbol($version( \($name)\) )]($style)'
+symbol = 'CXX '
+# format = 'via [$symbol($version) ]($style)'
+# symbol = '$name '
+style = 'bold green'
+commands = [ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ]
+version_format = 'v${major}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_extensions = ['c', 'h', 'cpp', 'cxx', 'cc', 'hpp', 'hxx', 'hh']
+detect_files = ['CMakeLists.txt', 'Makefile', 'meson.build', 'configure.ac', 'configure.in', 'GNUmakefile', 'makefile', 'Makefile.in']
+disabled = false
+
+# Character module https://starship.rs/config/#character
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](bold red) '
+disabled = false
+
+# CMake module https://starship.rs/config/#cmake
+[cmake]
+format = 'via [$symbol($version )]($style)'
+symbol = '△ '
+style = 'bold blue'
+version_format = 'v${major}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_extensions = []
+detect_files = ['CMakeLists.txt']
+disabled = false
+
+# COBOL / GNUCOBOL module https://starship.rs/config/#cobol-gnucobol
+[cobol]
+disabled = true
+
+# Command Duration module https://starship.rs/config/#command-duration
+[cmd_duration]
+format = '⏳[$duration]($style) '
+style = 'bold yellow'
+min_time = 500 # .5 second
+show_milliseconds = false
+show_notifications = false
+min_time_to_notify = 45_000 # 45 seconds 
+disabled = false
+
+# Conda module https://starship.rs/config/#conda
+[conda]
+format = 'via [$symbol$environment]($style) '
+symbol = ''
+style = 'bold green'
+truncation_length = 1
+ignore_base = true
+disabled = false
+
+# Container module https://starship.rs/config/#container
+[container]
+disabled = true
+
+# Crystal module https://starship.rs/config/#crystal
+[crystal]
+disabled = true
+
+# Daml module https://starship.rs/config/#daml
+[daml]
+disabled = true
+
+# Dart module https://starship.rs/config/#dart
+[dart]
+disabled = true
+
+# Deno module https://starship.rs/config/#deno
+[deno]
+format = 'via [$symbol($version )]($style)'
+symbol = '🦕 '
+style = 'bold blue'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['deno.json', 'deno.jsonc']
+disabled = false
+
+# Directory module https://starship.rs/config/#directory
+[directory]
+format = "[  $path ]($style)"
+style = "fg:fg-white bg:bg-navy-blue"
+truncation_length = 2
+truncation_symbol = "…/"
+
+# Docker Context module https://starship.rs/config/#docker-context
+[docker_context]
+disabled = true
+
+# Dotnet module https://starship.rs/config/#dotnet
+[dotnet]
+disabled = true
+
+# Elixir module https://starship.rs/config/#elixir
+[elixir]
+disabled = true
+
+# Elm module https://starship.rs/config/#elm
+[elm]
+disabled = true
+
+# Environment Variable module https://starship.rs/config/#env_var
+# [env_var]
+# disabled = true
+
+# [env_var.SHELL]
+# variable = 'SHELL'
+# default = 'zsh'
+# [env_var.USER]
+# default = 'root'
+
+# Erlang module https://starship.rs/config/#erlang
+[erlang]
+disabled = true
+
+# Fennel module https://starship.rs/config/#fennel
+[fennel]
+disabled = true
+
+# Fill module https://starship.rs/config/#fill
+[fill]
+disabled = true
+
+# Fossil branch module https://starship.rs/config/#fossil_branch
+[fossil_branch]
+disabled = true
+
+# Gcloud module https://starship.rs/config/#gcloud
+[gcloud]
+disabled = true
+
+# Git Branch module https://starship.rs/config/#git-branch
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+# symbol = "  "
+symbol = " "
+style = "fg:fg-dark-blue bg:bg-yellow"
+# ignore_branches = ['main', 'master']
+disabled = false
+
+# Git Commit module https://starship.rs/config/#git-commit
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+commit_hash_length = 4
+tag_symbol = '🔖 '
+disabled = true
+
+# Git State module https://starship.rs/config/#git-state
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "fg:fg-dark-blue bg:bg-yellow"
+disabled = true
+
+# Git metrics module https://starship.rs/config/#git-metrics
+[git_metrics]
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+# format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:fg-dark-blue bg:bg-yellow"
+deleted_style = "fg:bright-red bg:235"
+disabled = true
+
+# Git Status module https://starship.rs/config/#git-status
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "fg:fg-dark-blue bg:bg-yellow"
+disabled = true
+
+# Go or Golang module https://starship.rs/config/#go
+[golang]
+disabled = true
+
+# GUIX Shell module https://starship.rs/config/#guix_shell
+[guix_shell]
+disabled = true
+
+# Gradle module https://starship.rs/config/#gradle
+[gradle]
+format = 'via [$symbol($version )]($style)'
+symbol = "🅶 "
+style = 'bold blue'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['settings.gradle']
+detect_folders = ['\.gradle', 'gradle']
+disabled = false
+
+# Haskell module https://starship.rs/config/#haskell
+[haskell]
+disabled = true
+
+# Haxe module https://starship.rs/config/#haxe
+[haxe]
+disabled = true
+
+# Helm module https://starship.rs/config/#helm
+[helm]
+disabled = true
+
+# Hostname module https://starship.rs/config/#hostname
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+trim_at = '.local'
+disabled = true
+
+# Java module https://starship.rs/config/#java
+[java]
+format = 'via [$symbol($version )]($style)'
+symbol = '☕'
+style = 'bold red'
+version_format = 'v${major}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['pom.xml']
+detect_extensions = ['java', 'gradle']
+# detect_extensions = ['java', 'class', 'gradle', 'jar', 'cljs', 'cljc']
+detect_folders = []
+disabled = false
+
+# Jobs module https://starship.rs/config/#jobs
+[jobs]
+disabled = true
+
+# Julia module https://starship.rs/config/#julia
+[julia]
+disabled = true
+
+# Kotlin module https://starship.rs/config/#kotlin
+[kotlin]
+disabled = true
+
+# Kubernetes module https://starship.rs/config/#kubernetes
+[kubernetes]
+disabled = true
+
+# Line Break module https://starship.rs/config/#line-break
+[line_break]
+disabled = true
+
+# Local IP Address module https://starship.rs/config/#local-ip
+[localip]
+disabled = true
+
+# Lua module https://starship.rs/config/#lua
+[lua]
+disabled = true
+
+# Memory Usage module https://starship.rs/config/#memory-usage
+[memory_usage]
+disabled = true
+
+# Meson module https://starship.rs/config/#meson
+[meson]
+disabled = true
+
+# Mercurial Branch module https://starship.rs/config/#mercurial-branch
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+# symbol = " "
+disabled = true
+
+# Nim module https://starship.rs/config/#nim
+[nim]
+disabled = true
+
+# Nix-shell module https://starship.rs/config/#nix-shell
+[nix_shell]
+disabled = true
+
+# NodeJS module https://starship.rs/config/#node-js
+[nodejs]
+format = 'via [$symbol($version )]($style)'
+symbol = ' '
+style = 'bold green'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['!deno.json', '!deno.jsonc']
+detect_folders = ['node_modules']
+disabled = false
+
+# OCaml module https://starship.rs/config/#ocaml
+[ocaml]
+disabled = true
+
+# Opa Policy module https://starship.rs/config/#open-policy-agent
+[opa]
+disabled = true
+
+# OpenStack module https://starship.rs/config/#openstack
+[openstack]
+disabled = true
+
+# OS module https://starship.rs/config/#os
+[os]
+format = "on [$symbol ($name:$version )]($style)"
+style = "bold blue"
+disabled = true
+
+[os.symbols]
+Macos = "🍎"
+
+# Package module https://starship.rs/config/#package
+[package]
+disabled = true
+
+# Perl module https://starship.rs/config/#perl
+[perl]
+disabled = true
+
+# PHP module https://starship.rs/config/#php
+[php]
+disabled = true
+
+# Pijul Channel module https://starship.rs/config/#pijul-channel
+[pijul_channel]
+disabled = true
+
+# Pulumi module https://starship.rs/config/#pulumi
+[pulumi]
+format = 'via [$symbol($username@)$stack]($style) '
+# format = '[🛥 ($version )$stack]($style) '
+symbol = ' '
+style = 'bold 5'
+# version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+disabled = true
+
+# Purescript module https://starship.rs/config/#purescript
+[purescript]
+disabled = true
+
+# Python module https://starship.rs/config/#python
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_extensions = []
+detect_files = ['__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py']
+disabled = false
+
+# R module https://starship.rs/config/#r
+[rlang]
+disabled = true
+
+# Raku module https://starship.rs/config/#raku
+[raku]
+disabled = true
+
+# Red module https://starship.rs/config/#red
+[red]
+disabled = true
+
+# Ruby module https://starship.rs/config/#ruby
+[ruby]
+format = 'via [$symbol($version )]($style)'
+symbol = '💎 '
+style = 'bold red'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_files = ['deno.json', 'deno.jsonc']
+disabled = false
+
+# Rust module https://starship.rs/config/#rust
+[rust]
+format = 'via [$symbol($version )]($style)'
+symbol = '🦀 '
+style = 'bold red'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_extensions = ['rs']
+detect_files = ['Cargo.toml']
+detect_folders = []
+disabled = false
+
+# Scala module https://starship.rs/config/#scala
+[scala]
+disabled = true
+
+# Shell module https://starship.rs/config/#shell
+[shell]
+disabled = true
+
+# SHLVL module https://starship.rs/config/#shlvl
+[shlvl]
+disabled = true
+
+# Singularity module https://starship.rs/config/#singularity
+[singularity]
+disabled = true
+
+# Solidity module https://starship.rs/config/#solidity
+[solidity]
+disabled = true
+
+# Spack module https://starship.rs/config/#spack
+[spack]
+disabled = true
+
+# Status module https://starship.rs/config/#status
+[status]
+disabled = true
+
+# Sudo module https://starship.rs/config/#sudo
+[sudo]
+format = '[as $symbol]($style)'
+symbol = '🕵️ '
+style = 'bold black'
+disabled = false
+
+# Swift module https://starship.rs/config/#swift
+[swift]
+disabled = true
+
+# Terraform module https://starship.rs/config/#terraform
+[terraform]
+disabled = true
+
+# Time module https://starship.rs/config/#time
+[time]
+disabled = false
+time_format = "%R" # "%I:%M %p" Hour:Minute AM/PM Format (https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html)
+style = "bg:black" # 'bg:sty-bg-black'
+format = """\
+[](fg:fg-darker-cyan bg:fg-dark-blue)\
+[[ 󱑍 $time ](bg:fg-dark-blue fg:fg-cyan)]($style)\
+[](fg:fg-dark-blue bg:bg-navy-blue)\
+"""
+use_12hr = true
+
+# Username module https://starship.rs/config/#username
+[username]
+disabled = true
+
+# Vagrant module https://starship.rs/config/#vagrant
+[vagrant]
+disabled = true
+
+# V module https://starship.rs/config/#v
+[vlang]
+disabled = true
+
+# VCSH module https://starship.rs/config/#vcsh
+[vcsh]
+disabled = true
+
+# Zig module https://starship.rs/config/#zig
+[zig]
+format = 'via [$symbol($version )]($style)'
+symbol = '⚡️ '
+style = 'bold yellow'
+version_format = 'v${major}.${minor}' # 'v${major}.${minor}.${patch}' or 'v${raw}'
+detect_extensions = ['zig']
+detect_files = []
+detect_folders = []
+disabled = false
+
+# Custom module https://starship.rs/config/#custom-commands
+# https://docs.warp.dev/appearance/prompt#known-incompatibilities
+# [custom]
+# disabled = true
