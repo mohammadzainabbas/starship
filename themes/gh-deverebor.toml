@@ -1,0 +1,114 @@
+add_newline = false
+format = """
+╭─[  ](bg:#303030 fg:#c7c7c7)$username[](bg:#303030 fg:#707070)$directory$git_branch$git_status[](#303030)
+╰─$character
+"""
+
+[c]
+format = "[ $symbol ]($style)"
+style = "bg:#303030"
+symbol = ""
+
+[character]
+error_symbol = "[✘](fg:red)"
+success_symbol = "[❯](bold green)"
+
+[cmd_duration]
+format = "[ took [$duration](bold fg:#909090 bg:#303030)  ]($style)"
+min_time = 1
+style = "bg:#303030 fg:#909090"
+
+[directory]
+format = "[  $path ]($style)"
+home_symbol = "~"
+style = "fg:white bg:#303030"
+truncate_to_repo = true
+truncation_length = 9
+truncation_symbol = "~/…/"
+
+[directory.substitutions]
+"~" = " ~"
+
+[docker_context]
+format = "[ $symbol $context ]($style) $path"
+style = "bg:#303030"
+symbol = " "
+
+[fill]
+symbol = " "
+
+[git_branch]
+format = "[](fg:#707070 bg:#303030)[  ](fg:#D6D5CB bg:#303030)[](fg:#FFC0CB bg:#303030)[ $branch ](bold $style)"
+style = "fg:white bg:#303030"
+truncation_length = 15
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = "~"
+deleted = " "
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+format = "[$all_status$ahead_behind ]($style)"
+modified = " "
+renamed = " "
+staged = '[++\($count\)](fg:#56b60a bg:#303030)'
+stashed = "*"
+style = "fg:#0a96d6 bg:#303030"
+untracked = "?"
+up_to_date = " "
+
+[golang]
+format = "[ $symbol ](bold $style)"
+style = "fg:#FFFFFF bg:#303030"
+symbol = "go"
+
+[hostname]
+disabled = false
+format = "[@$hostname ]($style)"
+ssh_only = false
+style = "fg:white bg:#303030"
+
+[java]
+format = "[ $symbol ]($style)"
+style = "fg:#0a96d6 bg:#303030"
+symbol = ""
+
+[nodejs]
+format = "[ $symbol ]($style)"
+style = "fg:#0a96d6 bg:#303030"
+symbol = ""
+
+[os]
+disabled = true
+style = "bg:#303030"
+
+[python]
+format = "[ $symbol ]($style)"
+style = "fg:#0a96d6 bg:#303030"
+symbol = " "
+
+[rust]
+format = "[ $symbol ]($style)"
+style = "fg:#0a96d6 bg:#303030"
+symbol = ""
+
+[status]
+disabled = false
+format = "[[$signal_name ](fg:red bg:#303030)$symbol]($style)"
+map_symbol = false
+style = "bg:#303030"
+success_symbol = "[✔ ](fg:green bg:#303030)"
+symbol = "[✘ ](fg:red bg:#303030)"
+
+[time]
+disabled = false
+format = "[$time ]($style)"
+style = "bg:#303030 fg:#567676"
+time_format = "%R"
+
+[username]
+disabled = false
+format = "[$user]($style)"
+show_always = true
+style_root = "fg:white bg:#303030"
+style_user = "fg:#b69676 bg:#303030"
