@@ -1,3 +1,5 @@
+# https://gist.github.com/deverebor/3126b914b3abf110ca0cce478dc67ac7
+
 add_newline = false
 format = """
 ╭─[  ](bg:#303030 fg:#c7c7c7)$username[](bg:#303030 fg:#707070)$directory$git_branch$git_status[](#303030)
