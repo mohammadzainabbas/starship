@@ -1,5 +1,4 @@
-#Location: ~/.config/starship.toml
-#What_is_starship: https://starship.rs/
+# via (https://github.com/p3rception/dotfiles/blob/main/starship.toml)
 
 add_newline = true
 command_timeout = 2000
