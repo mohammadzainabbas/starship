@@ -1,7 +1,15 @@
 #! /bin/sh
 # -----------------------------------------------------------------------------
-# This script will be loading when Warp (https://www.warp.dev/) is loaded.
+# This script will be loading when Warp (https://www.warp.dev/) is loaded, via:
 # 
+# ``` (inside ~/.zshrc)
+# # Setup zsh to use Starship
+# eval "$(starship init zsh)"
+# if [[ -n "$WARP_SESSION_ID" || "$TERM_PROGRAM" == "WarpTerminal" ]]; then
+#     source ~/.config/starship/scripts/warp-init.sh
+# fi
+# ```
+#
 # 
 # -----------------------------------------------------------------------------
 
