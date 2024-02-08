@@ -1,4 +1,6 @@
 #! /bin/sh
+# This script will be loading when Warp
+
 # export STARSHIP_CONFIG=~/.config/starship/themes/pastel-powerline.toml
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # export STARSHIP_CACHE=~/.cache/starship/
