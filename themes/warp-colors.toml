@@ -80,7 +80,7 @@ disabled = true
 
 # Battery module https://starship.rs/config/#battery
 [battery]
-format = '[$symbol$percentage]($style) '
+format = '[$symbol$percentage%]($style) '
 full_symbol = '🔋 '
 charging_symbol = '⚡️'
 disabled = false
